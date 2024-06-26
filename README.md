@@ -35,3 +35,7 @@ py xfi.py run
 This command will execute the test based on the configuration and will output the results, indicating whether the target is vulnerable to LFI or RFI.
 
 ## Example
+
+#### Configure
+
+![image](https://github.com/njammy/xfi/assets/109813492/87be7fe8-8140-4fe8-96ae-768ec269e5f8)
