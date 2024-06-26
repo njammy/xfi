@@ -24,7 +24,7 @@ py xfi.py configure
 This command will prompt you to specify the target web server and the type of vulnerability (LFI or RFI) you want to test for.
 
 
-### Step 1: Configuration
+### Step 2: Testing
 
 Once the configuration is complete, run the following command to start the test:
 
