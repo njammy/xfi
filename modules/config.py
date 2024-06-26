@@ -32,10 +32,17 @@ def saveConfig(args):
             'message': 'Enter target base url:',
             'name': 'baseurl',
             'default': "",
+        },
+        {
+            'type': 'select',
+            'message': 'which xfi vuln',
+            'name': 'xfivuln',
+            'choices': ['LFI', 'RFI'],
         }
     ]
     answers = questionary.prompt(questions)
     configData['baseurl']= answers['baseurl']
+    configData['type']= answers['xfivuln']
 
     with open(configStored, 'w') as outfile:
         yaml.dump(configData, outfile, default_flow_style=False, sort_keys=False)

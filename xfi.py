@@ -2,6 +2,7 @@ import sys
 import argparse
 from modules import config
 from modules.ymlReader import YmlReader
+from modules.xfiController import xfiController
 
 def main(args):    
     parser = argparse.ArgumentParser(description="Evaluate Local and Remote File inclusion on web sever")
@@ -23,8 +24,8 @@ def configure(args):
 
 def run(args):
     config = YmlReader.load_file('config.yaml')
-    # controller = AppController()
-    # controller.apply(config)    
+    controller = xfiController()
+    controller.lfi() if config['type']=='LFI' else controller.rfi()
 
 if __name__ == "__main__":
     main(sys.argv[1:])
