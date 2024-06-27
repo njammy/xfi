@@ -1,4 +1,9 @@
+certifi==2024.6.2
+charset-normalizer==3.3.2
+idna==3.7
 prompt-toolkit==3.0.36
 PyYAML==6.0.1
 questionary==2.0.1
+requests==2.32.3
+urllib3==2.2.2
 wcwidth==0.2.13

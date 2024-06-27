@@ -36,31 +36,16 @@ def saveConfig(args):
         {
             'type': 'text',
             'message': 'Enter target base url:',
-            'name': 'baseurl',
+            'name': 'url',
             'default': "",
-        },
-        {
-            'type': 'text',
-            'message': 'Enter target route:',
-            'name': 'route',
-            'default': "",
-        },
-        {
-            'type': 'text',
-            'message': 'Enter specified param:',
-            'name': 'param',
-            'default': "",
-        },
+        }
     ]
     answers = questionary.prompt(questions)
-    configData['baseurl']= answers['baseurl']
+    configData['url']= answers['url']
     configData['type']= answers['xfivuln']
-    configData['route']= answers['route']
-    configData['param']= answers['param']
 
     with open(configStored, 'w') as outfile:
         yaml.dump(configData, outfile, default_flow_style=False, sort_keys=False)
 
     print("> configuration file was written to: {0}, Now you can  run `python xfi.py run`".format(Path(configStored).resolve()))
-    print("\n\n target url: ")
     sys.exit(0)

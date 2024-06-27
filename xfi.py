@@ -25,7 +25,7 @@ def configure(args):
 def run(args):
     config = YmlReader.load_file('config.yaml')
     controller = xfiController()
-    controller.lfi() if config['type']=='LFI' else controller.rfi()
+    controller.lfi(config) if config['type']=='LFI' else controller.rfi(config)
 
 if __name__ == "__main__":
     main(sys.argv[1:])
