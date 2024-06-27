@@ -38,11 +38,25 @@ def saveConfig(args):
             'message': 'Enter target base url:',
             'name': 'url',
             'default': "",
+        },
+        {
+            'type': 'confirm',
+            'message': 'Do you need to be logged for load this url ?',
+            'name': 'needauth',
+            'default': False,
         }
     ]
+    # http://192.168.245.40/vulnerabilities/fi/?page=
+        
     answers = questionary.prompt(questions)
+    
+    if answers['needauth']:
+        print("> Sorry for the moment we are not able to perform this test on Auth mode.")
+        sys.exit(0)
+    
     configData['url']= answers['url']
     configData['type']= answers['xfivuln']
+    configData['needauth']= answers['needauth']
 
     with open(configStored, 'w') as outfile:
         yaml.dump(configData, outfile, default_flow_style=False, sort_keys=False)

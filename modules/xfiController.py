@@ -44,6 +44,8 @@ class xfiController():
                     print(f'[!] Potential LFI vulnerability detected with payload: {payload}')
                 elif response.status_code == 200 and 'malicious' in response.text:
                     print(f'[!] Potential RFI vulnerability detected with payload: {payload}')
+                elif response.status_code == 403:
+                    print("[x] It seem like you need to configure 'xfi' to run on auth mode")
             except requests.RequestException as e:
                 print(f'[!] Error testing payload {payload}: {e}')
 
