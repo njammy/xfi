@@ -39,13 +39,15 @@ class xfiController():
         for payload in self.lfiPayload:
             full_url = config['url'] + payload
             try:
-                response = requests.get(full_url)
+                response = requests.get(full_url, cookies={"PHPSESSID":"mok36ehv7amhlir394qobfi9n6"})
                 if response.status_code == 200 and ('open_basedir' in response.text or 'root' in response.text):
                     print(f'[!] Potential LFI vulnerability detected with payload: {payload}')
                 elif response.status_code == 200 and 'malicious' in response.text:
                     print(f'[!] Potential RFI vulnerability detected with payload: {payload}')
                 elif response.status_code == 403:
                     print("[x] It seem like you need to configure 'xfi' to run on auth mode")
+                else:
+                    if payload == self.lfiPayload[len(self.lfiPayload)-1]: print("\n[X] Something don't work properly... ")
             except requests.RequestException as e:
                 print(f'[!] Error testing payload {payload}: {e}')
 
