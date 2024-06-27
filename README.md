@@ -36,6 +36,8 @@ This command will execute the test based on the configuration and will output th
 
 ## Example
 
-#### Configure
+#### Local File inclusion Check
 
-![image](https://github.com/njammy/xfi/assets/109813492/87be7fe8-8140-4fe8-96ae-768ec269e5f8)
+![image](https://github.com/njammy/xfi/assets/109813492/df9184ed-ba97-4a34-8990-0cfc019b9a57)
+
+
