@@ -39,7 +39,7 @@ class xfiController():
         for payload in self.lfiPayload:
             full_url = config['url'] + payload
             try:
-                response = requests.get(full_url, cookies={"PHPSESSID":"mok36ehv7amhlir394qobfi9n6"})
+                response = requests.get(full_url)
                 if response.status_code == 200 and ('open_basedir' in response.text or 'root' in response.text):
                     print(f'[!] Potential LFI vulnerability detected with payload: {payload}')
                 elif response.status_code == 200 and 'malicious' in response.text:
