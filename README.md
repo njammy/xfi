@@ -4,7 +4,7 @@ XFI is a tool designed to detect Local File Inclusion (LFI) and Remote File Incl
 
 ## Context
 
-Local File Inclusion (LFI) and Remote File Inclusion (RFI) are common vulnerabilities in web applications. These vulnerabilities allow attackers to include files on the web server, which can lead to information disclosure, remote code execution, and other malicious activities. XFI aims to help identify these vulnerabilities before they can be exploited by attackers in addition to that, it allows you to test a huge quantity of payloads in a short time
+Local File Inclusion (LFI) and Remote File Inclusion (RFI) are common vulnerabilities in web applications. These vulnerabilities allow attackers to include files on the web server, which can lead to information disclosure, remote code execution, and other malicious activities. XFI aims to help identify these vulnerabilities before they can be exploited by attackers in addition to that, **it allows you to test a huge quantity of payloads in a short time.**
 
 ## Usage
 
