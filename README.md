@@ -36,9 +36,15 @@ This command will execute the test based on the configuration and will output th
 
 ## Example
 
-#### Local File inclusion Check
+### Local File inclusion Check
 
-![image](https://github.com/njammy/xfi/assets/109813492/df9184ed-ba97-4a34-8990-0cfc019b9a57)
+#### *Checking payload have found*
+
+![image](https://github.com/njammy/xfi/assets/109813492/fae64e76-19e1-46f2-b638-812949992e2b)
+
+#### *Checking payload have not found*
+
+![image](https://github.com/njammy/xfi/assets/109813492/6b0b1fd6-0cda-40cb-8f16-da7bbcc09e11)
 
 
 ## MIT License
