@@ -41,3 +41,4 @@ This command will execute the test based on the configuration and will output th
 ![image](https://github.com/njammy/xfi/assets/109813492/df9184ed-ba97-4a34-8990-0cfc019b9a57)
 
 
+## MIT License

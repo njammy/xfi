@@ -6,6 +6,7 @@ from modules.xfiController import xfiController
 
 def main(args):    
     parser = argparse.ArgumentParser(description="Evaluate Local and Remote File inclusion on web sever")
+    parser.add_argument("-c", "--config", required=False, default="config.yml", help="path to the configuration file of the xfi")
     parser.set_defaults(func=lambda _: parser.print_help())
 
     action = parser.add_subparsers()
@@ -20,10 +21,10 @@ def main(args):
 
 
 def configure(args):
-    config.saveConfig(args)
+    config.saveConfig(args.config)
 
 def run(args):
-    config = YmlReader.load_file('config.yaml')
+    config = YmlReader.load_file(args.config)
     controller = xfiController()
     controller.lfi(config) if config['type']=='LFI' else controller.rfi(config)
 

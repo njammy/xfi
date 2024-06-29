@@ -4,8 +4,8 @@ from pathlib import Path
 import yaml
 
 
-def saveConfig(args):
-    configStored = Path() / "config.yaml"
+def saveConfig(config):
+    configStored = Path(config)
     configData = dict()
 
     if configStored.is_file():
@@ -44,6 +44,13 @@ def saveConfig(args):
             'message': 'Do you need to be logged for load this url ?',
             'name': 'needauth',
             'default': False,
+        },
+        {
+            'type': 'select',
+            'message': 'Select mode to launch xfi `light` (common payload, take few time to run) or `hard` (test massive payloads, take time ~4min)',
+            'name': 'lfimode',
+            'choices': ['LIGHT', 'HARD'],
+            'when': lambda answers: answers['xfivuln'] == 'LFI',
         }
     ]
     # http://192.168.245.40/vulnerabilities/fi/?page=
@@ -53,6 +60,8 @@ def saveConfig(args):
     if answers['needauth']:
         print("> Sorry for the moment we are not able to perform this test on Auth mode.")
         sys.exit(0)
+    if 'lfimode' in answers:
+        configData['lfimode'] = answers['lfimode']
     
     configData['url']= answers['url']
     configData['type']= answers['xfivuln']
