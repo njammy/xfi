@@ -19,7 +19,7 @@ class xfiController():
         for payload in self.lfiPayload:
             full_url = config['url'] + payload
             try:
-                response = requests.get(full_url, cookies={"PHPSESSID":"bofs3jjtfnghtmhnqp2324vnk5", "security":"low"})
+                response = requests.get(full_url)
                 if response.status_code == 200 and ('root' in response.text or 'open_basedir' in response.text):
                     goodPayload.append(full_url)
                 elif response.status_code == 403:
